@@ -12,11 +12,12 @@ jobs:
       script:
         - echo "VERIFY"
         - COMMITTER_EMAIL=$(git log -1 $TRAVIS_COMMIT --pretty="%cE")
-        - if [[ ! $COMMITTER_EMAIL =~ ^[a-z.]+@baloise\.[a-z]{2,3}$ ]]
-        - then
-        -   echo "Commit with invalid email (should be '@baloise.TLD'): $COMMITTER_EMAIL"
-        -   exit 1
-        - fi
+        - echo $COMMITTER_EMAIL
+        #- if [[ ! $COMMITTER_EMAIL =~ ^[a-z.]+@baloise\.[a-z]{2,3}$ ]]
+        #- then
+        #-   echo "Commit with invalid email (should be '@baloise.TLD'): $COMMITTER_EMAIL"
+        #-   exit 1
+        #- fi
     - stage: peribolos
       services: docker
       script:
