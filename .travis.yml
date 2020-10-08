@@ -12,13 +12,7 @@ jobs:
       script:
         - echo "VERIFY"
         - AUTHOR_EMAIL=$(git log -1 $TRAVIS_COMMIT --pretty="%aE")
-        - echo $AUTHOR_EMAIL
         - if [[ ! $AUTHOR_EMAIL =~ ^[a-z.]+@baloise\.[a-z]{2,3}$ ]]; then echo "Commit author (${AUTHOR_EMAIL}) doesn't have a '@baloise.TLD' email address!"; exit 1; fi
-        #- if [[ ! $COMMITTER_EMAIL =~ ^[a-z.]+@baloise\.[a-z]{2,3}$ ]]
-        #- then
-        #-   echo "Commit with invalid email (should be '@baloise.TLD'): $COMMITTER_EMAIL"
-        #-   exit 1
-        #- fi
     - stage: peribolos
       services: docker
       script:
