@@ -13,7 +13,7 @@ jobs:
         - echo "VERIFY"
         - AUTHOR_EMAIL=$(git log -1 $TRAVIS_COMMIT --pretty="%aE")
         - echo $AUTHOR_EMAIL
-        - if [[ $AUTHOR_EMAIL =~ ^[a-z.]+@baloise\.[a-z]{2,3}$ ]]; then echo "It's a match."; fi
+        - if [[ $AUTHOR_EMAIL =~ ^[a-z.]+@baloise\.[a-z]{2,3}$ ]]; then echo "Commit with invalid email (should be '@baloise.TLD'): $AUTHOR_EMAIL"; exit 1; fi
         #- if [[ ! $COMMITTER_EMAIL =~ ^[a-z.]+@baloise\.[a-z]{2,3}$ ]]
         #- then
         #-   echo "Commit with invalid email (should be '@baloise.TLD'): $COMMITTER_EMAIL"
