@@ -13,7 +13,7 @@ jobs:
         - echo "VERIFY"
         - AUTHOR_EMAIL=$(git log -1 $TRAVIS_COMMIT --pretty="%aE")
         - echo $AUTHOR_EMAIL
-        - if [[ $AUTHOR_EMAIL =~ ^[a-z.]+@baloise\.[a-z]{2,3}$ ]]; then echo "invalid mail"; exit 1; fi
+        - if [[ $AUTHOR_EMAIL =~ ^[a-z.]+@baloise\.[a-z]{2,3}$ ]]; then echo "Commit with invalid email (should be '@baloise.TLD'): ${AUTHOR_EMAIL}"; exit 1; fi
         #- if [[ ! $COMMITTER_EMAIL =~ ^[a-z.]+@baloise\.[a-z]{2,3}$ ]]
         #- then
         #-   echo "Commit with invalid email (should be '@baloise.TLD'): $COMMITTER_EMAIL"
@@ -23,15 +23,9 @@ jobs:
       services: docker
       script:
         - echo "PERIBOLOS"
-    - stage: test
-      services: docker
-      script:
-        - echo "test"
 
 stages:
-  - name: test
-    if: branch = master
   - name: verify-email
-    #if: branch = master AND type = pull_request # only on PRs to master
+    if: branch = main #AND type = pull_request # only on PRs to master
   - name: peribolos
-    if: branch = master AND type = push
+    if: branch = main AND type = push
