@@ -24,6 +24,6 @@ jobs:
 
 stages:
   - name: verify-email
-    if: branch = master AND type = pull_request # only on PRs to master
+    #if: branch = master AND type = pull_request # only on PRs to master
   - name: peribolos
     if: branch = master AND type = push
