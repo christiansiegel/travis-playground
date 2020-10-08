@@ -2,6 +2,10 @@ os: linux
 dist: xenial
 language: shell
 
+notifications:
+    webhooks: https://www.travisbuddy.com/
+    on_success: never
+
 env:
   global:
     - PERIBOLOS_TAG=v20200826-f9138eb980
